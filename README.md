@@ -13,21 +13,34 @@ pip install numpy scipy matplotlib openpyxl
 ## Data files
 
 Place in `data/` folder:
-- `PTSD_Hypoxia_Cortex.xlsx`
-- `PTSD_Hypoxia_Hipo.xlsx`
 
-Each file contains 5 sheets (HIF1, HIF2, HIF3, PACAP, PAI1).
-Data starts from row 7. Groups are arranged in columns (6 columns per group):
+**Molecular data (qPCR):**
+- `PCR_Results_Cortex.xlsx`
+- `PCR_Results_Hippocampus.xlsx`
+
+Each file contains 5 sheets (HIF-1, HIF-2, HIF-3, PACAP, PAI-1).
+Data starts from row 10. Groups are arranged in columns (6 columns per group):
 - Control (offset 0)
 - PTSD (offset 6)
 
+**Behavioural data:**
+- `Open_Field_Test_Results.xlsx`
+- `Elevated_Plus_Maze_Test_Results.xlsx`
+- `Dark-Light_Box_Test_Results.xlsx`
+
+Each file contains columns: `animal №`, `group`, `treatment`, followed by measured parameters.
+Groups: `control` / `ptsd`. Treatment: `non`.
+
 ## Usage
 ```bash
-# With IQR outlier removal (default)
-python qpcr_art1.py
+# Molecular analysis
+python molecular.py
+python molecular.py --no-outliers
 
-# Without outlier removal
-python qpcr_art1.py --no-outliers
+# Behavioural analysis (all tests)
+python behavioural.py
+python behavioural.py --test EPM
+python behavioural.py --no-outliers
 ```
 
 ## Statistical pipeline
@@ -43,9 +56,15 @@ results/YYYY-MM-DD_HH-MM-SS/
     Art1_qPCR_Cortex.png / .pdf
     Art1_qPCR_Hippocampus.png / .pdf
     stats_summary.csv
+    Art1_OF.png / .pdf
+    Art1_OF_stats.csv
+    Art1_EPM.png / .pdf
+    Art1_EPM_stats.csv
+    Art1_DLB.png / .pdf
+    Art1_DLB_stats.csv
 ```
 
-`stats_summary.csv` contains per-gene results:
+CSV files contain per-parameter results:
 normality p-values, overall test, post-hoc p-value, significance,
 mean ± SD ± SEM, n, outliers removed.
 
