@@ -1,7 +1,7 @@
 # HIF and PACAP gene expression in SPS-induced rat PTSD model
 
 Statistical analysis of HIF-1α, HIF-2α, HIF-3α, PACAP and PAI-1
-gene expression in hippocampus and cortex of rats with SPS-induced
+gene expression in hippocampus and medial cortex of rats with SPS-induced
 PTSD model. Includes normality testing, ANOVA/Kruskal-Wallis with
 post-hoc comparisons, and publication-ready boxplot visualizations.
 
